@@ -49,7 +49,6 @@ export function TodoItem({ id, task_name, status, last_update }: Task) {
                         ? "relative bg-gray-900/30 backdrop-blur-md border border-gray-700/30 p-6 rounded-xl hover:border-gray-400/40 transition-all duration-300"
                         : "relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 p-6 rounded-xl hover:border-gray-600/50 transition-all duration-300"
                       }
-      // <div className="relative bg-gray-700/30 backdrop-blur-md border border-gray-500/30 p-6 rounded-xl hover:border-gray-400/40 transition-all duration-300">
       >
         <div className="flex items-center gap-4">
           <div
@@ -65,7 +64,7 @@ export function TodoItem({ id, task_name, status, last_update }: Task) {
             className={`flex-shrink-0 w-7 h-7 rounded-full border-2 
                         flex items-center justify-center cursor-pointer transition-all duration-200 ${
                           status
-                            ? "bg-emerald-400 border-0 text-white shadow-lg"
+                            ? "bg-emerald-400 border-emerald-400 text-white shadow-lg"
                             : "border-gray-500 hover:border-emerald-400"
                         }`}
           >
