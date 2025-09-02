@@ -1,10 +1,6 @@
 import { Loader2 } from "lucide-react"; 
 import { motion, AnimatePresence } from "framer-motion";
-
-interface LoadingPopupProps {
-  message: string;
-  isVisible: boolean;
-}
+import { LoadingPopupProps } from "../types/models";
 
 export function LoadingPopup({ message, isVisible }: LoadingPopupProps) {
   return (

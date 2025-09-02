@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Check, Edit, Trash2 } from "lucide-react";
-import { Task } from "../types/task";
+import { TaskProps } from "../types/models";
 import { LoadingPopup } from "./LoadingPopup";
 import { useFilteredTask } from "../hooks/useFilteredTask";
 import { useCompleteTask } from "../hooks/useCompleteTask";
@@ -9,7 +9,7 @@ import { useDeleteTask } from "../hooks/useDeleteTask";
 import { useEditTask } from "../hooks/useEditTask";
 
 
-export function TodoItem({ id, task_name, status, last_update }: Task) {
+export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
   // helper: shorten owner address (0x1234...abcd)
   const shorten = (addr: string) =>
     addr.length > 10 ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : addr;

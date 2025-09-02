@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Sparkles } from 'lucide-react';
-
-interface TodoFormProps {
-  onAdd: (text: string) => void;
-}
+import { TodoFormProps } from '../types/models';
 
 export function TodoForm({ onAdd }: TodoFormProps) {
   const [text, setText] = useState('');

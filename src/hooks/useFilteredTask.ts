@@ -1,5 +1,5 @@
 import { useState, useMemo  } from 'react';
-import { Task, FilterType } from '../types/task';
+import { TaskProps, FilterType } from '../types/models';
 import { useFetchTask } from "./useFetchTask";
 
 export const useFilteredTask = () => {
@@ -7,7 +7,7 @@ export const useFilteredTask = () => {
   const { data, isLoading, error, refetch } = useFetchTask();
 
   // Transform blockchain objects into Task[]
-  const tasks: Task[] = useMemo(() => {
+  const tasks: TaskProps[] = useMemo(() => {
     return data.map((task: any) => {
       const fields = task.data?.content?.fields;
       return {

@@ -1,15 +1,5 @@
-import { FilterType } from '../types/task';
-
-interface FilterBarProps {
-  currentFilter: FilterType;
-  onFilterChange: (filter: FilterType) => void;
-  stats: {
-    total: number;
-    active: number;
-    completed: number;
-  };
-  onClearCompleted: () => void;
-}
+import { FilterType } from '../types/models';
+import { FilterBarProps } from '../types/models';
 
 export function FilterBar({
   currentFilter,
