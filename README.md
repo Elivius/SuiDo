@@ -2,7 +2,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-**SuiDo** is a lightweight **Web3 To-Do dApp** that leverages the **Sui** blockchain to offer a decentralized, secure, and high-performance task management experience.
+**SuiDo** is a lightweight **Web3 To-Do dApp** that leverages the **Sui Testnet** blockchain to offer a decentralized, secure, and high-performance task management experience.
 
 ---
 
