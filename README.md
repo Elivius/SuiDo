@@ -8,7 +8,7 @@
 
 ##  Live Demo
 
-Check out the live version of SuiDo here: [sui-do.vercel.app](https://sui-do.vercel.app) :contentReference[oaicite:0]{index=0}
+Check out the live version of SuiDo here: [sui-do.vercel.app](https://sui-do.vercel.app)
 
 ---
 
