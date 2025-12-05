@@ -1,16 +1,31 @@
-import { useMemo } from "react"
+"use client";
+
+import { useState, useEffect } from "react"
+
+interface Star {
+  id: number;
+  top: string;
+  left: string;
+  size: string;
+  delay: string;
+  duration: string;
+}
 
 export function FloatingStars() {
-  const stars = useMemo(() => {
-    return Array.from({ length: 60 }).map((_, i) => ({
+  const [stars, setStars] = useState<Star[]>([]);
+
+  // Generate stars only on the client to avoid hydration mismatch
+  useEffect(() => {
+    const generatedStars = Array.from({ length: 60 }).map((_, i) => ({
       id: i,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
       size: `${Math.random() * 2 + 1}px`,
       delay: `${Math.random() * 8000}ms`,
       duration: `${3 + Math.random() * 4}s`,
-    }))
-  }, [])
+    }));
+    setStars(generatedStars);
+  }, []);
 
   return (
     <>

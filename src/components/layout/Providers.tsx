@@ -14,7 +14,7 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
     return (
         <QueryClientProvider client={queryClient}>
-            <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
+            <SuiClientProvider networks={networkConfig} defaultNetwork={process.env.NEXT_PUBLIC_NETWORK as "devnet" | "mainnet" | "testnet" | undefined}>
                 <WalletProvider autoConnect>
                     {children}
                 </WalletProvider>
