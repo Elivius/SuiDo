@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Check, Edit, Trash2 } from "lucide-react";
-import { TaskProps } from "../types/models";
-import { LoadingPopup } from "./LoadingPopup";
-import { useFilteredTask } from "../hooks/useFilteredTask";
-import { useCompleteTask } from "../hooks/useCompleteTask";
-import { useUndoCompletedTask } from "../hooks/useUndoCompletedTask";
-import { useDeleteTask } from "../hooks/useDeleteTask";
-import { useEditTask } from "../hooks/useEditTask";
+import { TaskProps } from "@/types/models";
+import { LoadingPopup } from "@/components/ui/LoadingPopup";
+import { useFilteredTask } from "@/hooks/useFilteredTask";
+import { useCompleteTask } from "@/hooks/useCompleteTask";
+import { useUndoCompletedTask } from "@/hooks/useUndoCompletedTask";
+import { useDeleteTask } from "@/hooks/useDeleteTask";
+import { useEditTask } from "@/hooks/useEditTask";
 
 
 export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
@@ -16,8 +16,8 @@ export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
 
   const { refetch } = useFilteredTask();
 
-  const { completeTask, isPending: isCompleting  } = useCompleteTask(refetch);
-  const { undoCompletedTask, isPending: isUndoing  } = useUndoCompletedTask(refetch);
+  const { completeTask, isPending: isCompleting } = useCompleteTask(refetch);
+  const { undoCompletedTask, isPending: isUndoing } = useUndoCompletedTask(refetch);
   const { deleteTask, isPending: isDeleting } = useDeleteTask(refetch);
   const { editTask, isPending: isUpdating } = useEditTask(refetch);
 
@@ -44,11 +44,11 @@ export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
   return (
     <div className="group relative overflow-hidden rounded-xl transition-all duration-300">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
-      
+
       <div className={status
-                        ? "relative bg-gray-900/30 backdrop-blur-md border border-gray-700/30 p-6 rounded-xl hover:border-gray-400/40 transition-all duration-300"
-                        : "relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 p-6 rounded-xl hover:border-gray-600/50 transition-all duration-300"
-                      }
+        ? "relative bg-gray-900/30 backdrop-blur-md border border-gray-700/30 p-6 rounded-xl hover:border-gray-400/40 transition-all duration-300"
+        : "relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 p-6 rounded-xl hover:border-gray-600/50 transition-all duration-300"
+      }
       >
         <div className="flex items-center gap-4">
           <div
@@ -62,11 +62,10 @@ export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
               }
             }}
             className={`flex-shrink-0 w-7 h-7 rounded-full border-2 
-                        flex items-center justify-center cursor-pointer transition-all duration-200 ${
-                          status
-                            ? "bg-emerald-400 border-emerald-400 text-white shadow-lg"
-                            : "border-gray-500 hover:border-emerald-400"
-                        }`}
+                        flex items-center justify-center cursor-pointer transition-all duration-200 ${status
+                ? "bg-emerald-400 border-emerald-400 text-white shadow-lg"
+                : "border-gray-500 hover:border-emerald-400"
+              }`}
           >
             {status && <Check size={18} />}
           </div>
@@ -89,9 +88,8 @@ export function TodoItem({ id, task_name, status, last_update }: TaskProps) {
             ) : (
               <>
                 <p
-                  className={`break-words transition-all duration-300 ${
-                    status ? "line-through text-gray-400" : "text-gray-100"
-                  }`}
+                  className={`break-words transition-all duration-300 ${status ? "line-through text-gray-400" : "text-gray-100"
+                    }`}
                 >
                   {task_name}
                 </p>

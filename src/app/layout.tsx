@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SuiClientProvider, WalletProvider } from "@mysten/dapp-kit";
-import { networkConfig } from "@/networkConfig";
+import { ToastContainer } from "react-toastify";
+import { Providers } from "@/components/layout/Providers";
+import { BackgroundEffects } from "@/components/layout/BackgroundEffects";
+import { Header } from "@/components/layout/Header";
 
 import "@mysten/dapp-kit/dist/index.css";
-import "@/index.css";
-
-const queryClient = new QueryClient();
+import "@/styles/globals.css";
 
 export default function RootLayout({
     children,
@@ -25,13 +24,27 @@ export default function RootLayout({
             </head>
             <body className="bg-black">
                 <React.StrictMode>
-                    <QueryClientProvider client={queryClient}>
-                        <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
-                            <WalletProvider autoConnect>
+                    <Providers>
+                        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900 relative overflow-hidden">
+                            <BackgroundEffects />
+
+                            <div className="container mx-auto px-4 py-12 max-w-2xl relative z-10">
+                                <Header />
                                 {children}
-                            </WalletProvider>
-                        </SuiClientProvider>
-                    </QueryClientProvider>
+                            </div>
+
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={3000}
+                                hideProgressBar={false}
+                                newestOnTop
+                                closeOnClick
+                                pauseOnHover
+                                draggable
+                                theme="dark"
+                            />
+                        </div>
+                    </Providers>
                 </React.StrictMode>
             </body>
         </html>

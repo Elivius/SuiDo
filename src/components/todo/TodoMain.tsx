@@ -2,22 +2,22 @@ import { Zap, Database } from "lucide-react";
 import { TodoForm } from "./TodoForm";
 import { TodoItem } from "./TodoItem";
 import { FilterBar } from "./FilterBar";
-import { LoadingPopup } from "./LoadingPopup";
-import { useFilteredTask } from "../hooks/useFilteredTask";
-import { useCreateTask } from "../hooks/useCreateTask";
-import { useRemoveCompletedTask } from "../hooks/useRemoveCompletedTask";
+import { LoadingPopup } from "@/components/ui/LoadingPopup";
+import { useFilteredTask } from "@/hooks/useFilteredTask";
+import { useCreateTask } from "@/hooks/useCreateTask";
+import { useRemoveCompletedTask } from "@/hooks/useRemoveCompletedTask";
 
 
 export function TodoMain() {
   const {
-      todos,
-      filter,
-      stats,
-      setFilter,
-      isLoading,
-      error,
-      refetch,
-    } = useFilteredTask();
+    todos,
+    filter,
+    stats,
+    setFilter,
+    isLoading,
+    error,
+    refetch,
+  } = useFilteredTask();
 
   const { createTask, isPending: isCreating } = useCreateTask(refetch);
   const { removeCompletedTask, isPending: isRemoving } = useRemoveCompletedTask(refetch);
@@ -53,7 +53,7 @@ export function TodoMain() {
             onFilterChange={setFilter}
             stats={stats}
             onClearCompleted={handleClearCompleted}
-            />
+          />
         </div>
       )}
 
@@ -89,14 +89,14 @@ export function TodoMain() {
           />
         ))
       )}
-      
+
       <div className="animate-in fade-in duration-700">
         {stats.total > 0 && (
           <footer className="mt-16 text-center relative">
             <div className="relative group">
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur opacity-0"></div>
-              
+
               <div className="relative inline-flex items-center gap-3 px-8 py-4 bg-gray-800/60 backdrop-blur-md border border-gray-700/50 rounded-full shadow-2xl">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                 <p className="text-gray-300 text-sm font-medium">
@@ -105,7 +105,7 @@ export function TodoMain() {
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-500"></div>
               </div>
             </div>
-            
+
             <div className="mt-4 text-sm text-gray-500 flex items-center justify-center gap-2">
               <span>Synced with Sui Network</span>
             </div>

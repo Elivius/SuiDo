@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { Transaction } from "@mysten/sui/transactions";
 import { useCurrentAccount, useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "../networkConfig";
+import { useNetworkVariable } from "@/config/network";
 
 export function useRemoveCompletedTask(onSuccess?: () => void) {
     const packageId = useNetworkVariable("packageId");

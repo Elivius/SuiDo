@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { Transaction } from "@mysten/sui/transactions";
 import { useCurrentAccount, useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "../networkConfig";
+import { useNetworkVariable } from "@/config/network";
 
 export function useDeleteTask(onSuccess?: () => void) {
     const packageId = useNetworkVariable("packageId");
@@ -15,14 +15,14 @@ export function useDeleteTask(onSuccess?: () => void) {
             toast.warning("Connect wallet first");
             return;
         }
-        
+
         try {
             const tx = new Transaction();
             tx.moveCall({
                 target: `${packageId}::sui_do::delete_task`,
                 arguments: [tx.object(taskId)],
             });
-        
+
             signAndExecute(
                 { transaction: tx },
                 {
@@ -32,7 +32,7 @@ export function useDeleteTask(onSuccess?: () => void) {
                     onSuccess: async ({ digest }) => {
                         toast.success(`Task deleted. Digest: ${digest}`);
                         await suiClient.waitForTransaction({ digest }); // wait for confirmation
-                        
+
                         if (onSuccess) onSuccess();
                     },
                 },

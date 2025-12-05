@@ -1,5 +1,5 @@
 import { useCurrentAccount, useSuiClientQuery } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "../networkConfig";
+import { useNetworkVariable } from "@/config/network";
 
 export function useFetchTask() {
     const packageId = useNetworkVariable("packageId");
@@ -12,7 +12,7 @@ export function useFetchTask() {
     const { data, isLoading, isError, error, refetch } = useSuiClientQuery(
         "getOwnedObjects",
         {
-            owner: account.address,     
+            owner: account.address,
             filter: {
                 MatchAll: [
                     {
@@ -22,7 +22,7 @@ export function useFetchTask() {
                         AddressOwner: account.address,
                     },
                 ],
-            },            
+            },
             options: {
                 showOwner: true,
                 showContent: true,

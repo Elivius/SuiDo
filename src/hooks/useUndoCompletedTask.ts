@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { Transaction } from "@mysten/sui/transactions";
 import { useCurrentAccount, useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "../networkConfig";
+import { useNetworkVariable } from "@/config/network";
 
 export function useUndoCompletedTask(onSuccess?: () => void) {
     const packageId = useNetworkVariable("packageId");
@@ -20,11 +20,11 @@ export function useUndoCompletedTask(onSuccess?: () => void) {
             const tx = new Transaction();
             tx.moveCall({
                 target: `${packageId}::sui_do::undo_completed_task`,
-                arguments: [tx.object(taskId), tx.object('0x6')], 
+                arguments: [tx.object(taskId), tx.object('0x6')],
             });
 
             signAndExecute(
-                { transaction: tx},
+                { transaction: tx },
                 {
                     onError: (err) => {
                         toast.error(err.message);
