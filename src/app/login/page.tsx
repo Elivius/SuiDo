@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Zap, Wallet, Shield, Sparkles } from "lucide-react";
-import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
-import { isEnokiWallet } from '@mysten/enoki'
+import { useCurrentAccount } from "@mysten/dapp-kit";
 import { GoogleLoginButton } from "@/components/ui/GoogleLoginButton";
+import { WalletConnectButton } from "@/components/ui/WalletConnectButton";
 
 export default function LoginPage() {
     const currentAccount = useCurrentAccount();
@@ -47,12 +47,9 @@ export default function LoginPage() {
             </div>
 
             {/* Connect Button Container */}
-            <div className="relative group mt-8">
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-                <div className="relative">
-                    <ConnectButton walletFilter={(wallet) => !isEnokiWallet(wallet)} />
-                </div>
-            </div>            
+            <div className="mt-8">
+                <WalletConnectButton />
+            </div>
 
             {/* Divider */}
             <div className="flex items-center gap-3 w-full my-2">
