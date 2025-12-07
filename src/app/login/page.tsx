@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Zap, Wallet, Shield, Sparkles } from "lucide-react";
 import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
+import { isEnokiWallet } from '@mysten/enoki'
+import { GoogleLoginButton } from "@/components/ui/GoogleLoginButton";
 
 export default function LoginPage() {
     const currentAccount = useCurrentAccount();
@@ -48,9 +50,18 @@ export default function LoginPage() {
             <div className="relative group mt-8">
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
                 <div className="relative">
-                    <ConnectButton />
+                    <ConnectButton walletFilter={(wallet) => !isEnokiWallet(wallet)} />
                 </div>
+            </div>            
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 w-full my-2">
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+                <span className="text-xs text-gray-500 font-medium">or continue with</span>
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
             </div>
+
+            <GoogleLoginButton />
 
             {/* Feature highlights */}
             <div className="grid grid-cols-3 gap-6 mt-12 max-w-md">

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Shield, Sparkles } from "lucide-react";
 import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 import { TodoMain } from "@/components/todo/TodoMain";
+import { isEnokiWallet } from '@mysten/enoki'
 
 export default function DashboardPage() {
     const currentAccount = useCurrentAccount();
@@ -29,7 +30,7 @@ export default function DashboardPage() {
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
                     <div className="relative">
-                        <ConnectButton />
+                        <ConnectButton walletFilter={(wallet) => !isEnokiWallet(wallet)} />
                     </div>
                 </div>
             </div>
