@@ -1,10 +1,13 @@
-"use client";
-
 import { useSuiClientContext } from "@mysten/dapp-kit";
 import { isEnokiNetwork, registerEnokiWallets } from "@mysten/enoki";
 import { useEffect } from "react";
 
-export function RegisterEnokiWallets() {
+/**
+ * Hook to register Enoki wallets (zkLogin) with the current Sui network.
+ * Should be called once at the app root level.
+ * Automatically handles registration cleanup when network changes.
+ */
+export function useRegisterEnokiWallets() {
     const { client, network } = useSuiClientContext();
 
     useEffect(() => {
@@ -25,6 +28,4 @@ export function RegisterEnokiWallets() {
         // Cleanup: unregister wallets when network changes or component unmounts
         return unregister;
     }, [client, network]);
-
-    return null;
 }
