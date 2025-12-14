@@ -29,3 +29,15 @@ export interface FilterBarProps {
   stats: Stats;
   onClearCompleted: () => void;
 }
+
+export interface SponsoredTransactionOptions {
+  allowedMoveCallTargets: string[];
+  /**
+   * allowedAddresses is OPTIONAL
+   * Primary recipients if using tx.transferObjects.
+   * Not strictly required for purely moveCall transactions unless policy enforces it.
+   */
+  allowedAddresses?: string[];
+  onSuccess?: (digest: string) => void;
+  onError?: (error: Error) => void;
+}
